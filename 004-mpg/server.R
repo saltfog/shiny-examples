@@ -1,5 +1,6 @@
 library(shiny)
 library(datasets)
+library(ggplot2)
 
 # We tweak the "am" field to have nicer factor labels. Since
 # this doesn't rely on any user inputs we can do this once at
@@ -29,6 +30,9 @@ function(input, output) {
   output$mpgPlot <- renderPlot({
     boxplot(as.formula(formulaText()),
             data = mpgData,
+            main="MPG by Engine Variables",
+            ylab = "MPG",
+            col = "blue",
             outline = input$outliers)
   })
 }
